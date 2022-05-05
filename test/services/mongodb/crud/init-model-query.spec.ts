@@ -24,7 +24,8 @@ describe("initModelQuery", () => {
   })
   
   it("should call parser by length of result", async () => {
-    const testResults = ["0", "1", "2", "3"]
+    const testItem = { toJSON: () => {} }
+    const testResults = [testItem, testItem, testItem, testItem]
     const model: any = {
       find: sandbox.stub().returns(testResults)
     }

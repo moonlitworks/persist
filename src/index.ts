@@ -1,1 +1,1 @@
-export * as mongodb from "./services/mongodb"
+export * as mongodb from "#mongodb"

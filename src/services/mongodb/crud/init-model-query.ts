@@ -1,7 +1,6 @@
 import { Model } from "mongoose"
-import { hasId } from "../../../types"
+import { hasId } from "#types"
 import { DocumentParser } from "../types"
-import toJson from "./to-json"
 
 export default <T extends hasId, Query = Partial<T>>(
   model: Model<T>,
@@ -9,5 +8,5 @@ export default <T extends hasId, Query = Partial<T>>(
 ) =>
   async (query: Query) => {
     const docs = await model.find(query)
-    return docs.map(toJson).map(parser)
+    return docs.map(d => d.toJSON()).map(parser)
   }

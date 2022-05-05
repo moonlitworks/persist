@@ -16,7 +16,7 @@ describe("initModelUpdate", () => {
   
   it("should call model.findByIdAndUpdate with passed id", async () => {
     const model: any = {
-      findByIdAndUpdate: sandbox.stub().returns("anything")
+      findByIdAndUpdate: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
     const parser = sandbox.stub().returns({})
@@ -28,19 +28,31 @@ describe("initModelUpdate", () => {
   
   it("should call model.findByIdAndUpdate with passed body", async () => {
     const model: any = {
-      findByIdAndUpdate: sandbox.stub().returns("anything")
+      findByIdAndUpdate: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
     const parser = sandbox.stub().returns({})
     const testId: any = "test-id"
     const testBody: any = { test: true }
     await initModelUpdate(model, parser as any)(testId, testBody)
-    expect(model.findByIdAndUpdate.firstCall?.lastArg).to.eql(testBody)
+    expect(model.findByIdAndUpdate.firstCall?.args[1]).to.eql(testBody)
+  })
+  
+  it("should call model.findByIdAndUpdate with option", async () => {
+    const model: any = {
+      findByIdAndUpdate: sandbox.stub().returns({ toJSON: () => {} })
+    }
+    sandbox.stub(mongoose, "isValidObjectId").returns(true)
+    const parser = sandbox.stub().returns({})
+    const testId: any = "test-id"
+    const testBody: any = { test: true }
+    await initModelUpdate(model, parser as any)(testId, testBody)
+    expect(model.findByIdAndUpdate.firstCall?.lastArg).to.eql({ new: true })
   })
   
   it("should not call model.findByIdAndUpdate when id is not valid ObjectId", async () => {
     const model: any = {
-      findByIdAndUpdate: sandbox.stub().returns("anything")
+      findByIdAndUpdate: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(false)
     const parser = sandbox.stub().returns({})
@@ -52,7 +64,7 @@ describe("initModelUpdate", () => {
   
   it("should call model.findByIdAndUpdate when id is valid ObjectId", async () => {
     const model: any = {
-      findByIdAndUpdate: sandbox.stub().returns("anything")
+      findByIdAndUpdate: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
     const parser = sandbox.stub().returns({})
@@ -64,14 +76,14 @@ describe("initModelUpdate", () => {
   
   it("should return true when findByIdAndUpdate returns anything", async () => {
     const model: any = {
-      findByIdAndUpdate: sandbox.stub().returns("anything")
+      findByIdAndUpdate: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
-    const parser = sandbox.stub().returns("test-item")
+    const parser = sandbox.stub().returns({ test: "result" })
     const testId: any = "test-id"
     const testBody: any = { test: true }
     const item = await initModelUpdate(model, parser as any)(testId, testBody)
-    expect(item).to.be.true
+    expect(item).to.eql({ test: "result" })
   })
   
   it("should return true when findByIdAndUpdate returns null", async () => {
@@ -83,6 +95,6 @@ describe("initModelUpdate", () => {
     const testId: any = "test-id"
     const testBody: any = { test: true }
     const item = await initModelUpdate(model, parser as any)(testId, testBody)
-    expect(item).to.be.false
+    expect(item).to.be.undefined
   })
 })

@@ -36,7 +36,14 @@
   "files": [
     "lib"
   ],
+  "imports": {
+    "#types": "./lib/types",
+    "#types/*": "./lib/types/*",
+    "#mongodb": "./lib/services/mongodb",
+    "#mongodb/*": "./lib/services/mongodb/*"
+  },
   "exports": {
+    "./package.json": "./package.json",
     ".": "./lib/index.js",
     "./mongodb": "./lib/services/mongodb/index.js"
   },

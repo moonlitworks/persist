@@ -57,7 +57,7 @@ describe("initModelGet", () => {
   
   it("should call parser when item is found", async () => {
     const model: any = {
-      findById: sandbox.stub().returns("test-item")
+      findById: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
     const parser = sandbox.stub()

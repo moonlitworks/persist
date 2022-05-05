@@ -16,7 +16,7 @@ describe("initModelDelete", () => {
   
   it("should call model.findByIdAndRemove with passed id", async () => {
     const model: any = {
-      findByIdAndRemove: sandbox.stub().returns("anything")
+      findByIdAndRemove: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
     const parser = sandbox.stub().returns({})
@@ -27,7 +27,7 @@ describe("initModelDelete", () => {
   
   it("should not call model.findById when id is not valid ObjectId", async () => {
     const model: any = {
-      findByIdAndRemove: sandbox.stub().returns("anything")
+      findByIdAndRemove: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(false)
     const parser = sandbox.stub().returns({})
@@ -37,31 +37,31 @@ describe("initModelDelete", () => {
   
   it("should return undefined when id is not valid ObjectId", async () => {
     const model: any = {
-      findByIdAndRemove: sandbox.stub().returns("anything")
+      findByIdAndRemove: sandbox.stub().returns({ toJSON: () => {} })
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(false)
     const parser = sandbox.stub().returns("test-item")
     const item = await initModelDelete(model, parser as any)("test-id")
-    expect(item).to.be.false
+    expect(item).to.be.undefined
   })
   
-  it("should return true when findByIdAndRemove returns anything", async () => {
-    const model: any = {
-      findByIdAndRemove: sandbox.stub().returns("anything")
-    }
-    sandbox.stub(mongoose, "isValidObjectId").returns(true)
-    const parser = sandbox.stub().returns("test-item")
-    const item = await initModelDelete(model, parser as any)("test-id")
-    expect(item).to.be.true
-  })
-  
-  it("should return true when findByIdAndRemove returns null", async () => {
+  it("should return undefined when failed", async () => {
     const model: any = {
       findByIdAndRemove: sandbox.stub().returns(null)
     }
     sandbox.stub(mongoose, "isValidObjectId").returns(true)
+    const parser = sandbox.stub().returns("anything")
+    const item = await initModelDelete(model, parser as any)("test-id")
+    expect(item).to.be.undefined
+  })
+  
+  it("should return deleted item when successful", async () => {
+    const model: any = {
+      findByIdAndRemove: sandbox.stub().returns({ toJSON: () => {} })
+    }
+    sandbox.stub(mongoose, "isValidObjectId").returns(true)
     const parser = sandbox.stub().returns("test-item")
     const item = await initModelDelete(model, parser as any)("test-id")
-    expect(item).to.be.false
+    expect(item).to.eql("test-item")
   })
 })

@@ -15,7 +15,7 @@ describe("initModelCreate", () => {
   
   it("should call model.create with passed body", async () => {
     const model: any = {
-      create: sandbox.stub().returns({})
+      create: sandbox.stub().returns({ toJSON: () => {} })
     }
     const parser = sandbox.stub().returns({ id: "test-id", test: true })
     const testBody: any = { test: true }
@@ -30,12 +30,12 @@ describe("initModelCreate", () => {
     const parser = sandbox.stub().returns({ id: "test-id", test: true })
     const testBody: any = { test: true }
     const created = await initModelCreate(model, parser as any)(testBody)
-    expect(created).to.be.false
+    expect(created).to.be.undefined
   })
   
   it("should call parser if create returns item", async () => {
     const model: any = {
-      create: sandbox.stub().returns({})
+      create: sandbox.stub().returns({ toJSON: () => {} })
     }
     const parser = sandbox.stub().returns({ id: "test-id", test: true })
     const testBody: any = { test: true }
