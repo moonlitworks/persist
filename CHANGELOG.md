@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.5 (2022-05-05)
+
+
+### Bug Fixes
+
+* **package.json:** re-add export types ([aadfa40](https://github.com/moonlitworks/persist/commit/aadfa40408078bb8a0b528f33ad7c4d399686ec2))
+
 ### 1.0.4 (2022-05-05)
 
 
