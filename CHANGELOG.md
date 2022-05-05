@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.8 (2022-05-05)
+
+
+### Features
+
+* **mongodb:** add getAll operation to basic crud ([ad3f33e](https://github.com/moonlitworks/persist/commit/ad3f33ee7c0fbfec45c0a76b6ace31ad7a4bf302))
+
 ### 0.0.7 (2022-05-05)
 
 ### [0.0.6](https://github.com/moonlitworks/persist/compare/v0.0.5...v0.0.6) (2022-05-05)
