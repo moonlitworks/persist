@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.3 (2022-05-05)
+
+
+### Bug Fixes
+
+* **mongodb:** define operation returns ([6cac99f](https://github.com/moonlitworks/persist/commit/6cac99f15e3cca7a20147e97ed16f9530aafa015))
+
 ### 1.0.2 (2022-05-05)
 
 ### 1.0.1 (2022-05-05)
