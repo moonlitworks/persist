@@ -9,6 +9,7 @@ jobs:
   test:
     name: Test
     runs-on: self-hosted
+    if: "contains(github.event.head_commit.message, 'chore(release)')"
     steps:
       - uses: actions/checkout@v3
         name: Checkout
@@ -27,7 +28,6 @@ jobs:
     name: Publish to Github Packages
     needs: test
     runs-on: self-hosted
-    if: "contains(github.event.head_commit.message, 'chore(release)')"
     permissions:
       contents: read
       packages: write

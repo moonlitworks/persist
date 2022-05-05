@@ -9,6 +9,7 @@ jobs:
   test:
     name: Test
     runs-on: self-hosted
+    if: "!contains(github.event.head_commit.message, 'chore(release)')"
     steps:
       - uses: actions/checkout@v3
         name: Checkout
@@ -27,7 +28,6 @@ jobs:
     name: Version Bump
     needs: test
     runs-on: self-hosted
-    if: "!contains(github.event.head_commit.message, 'chore(release)')"
     steps:
       - name: Import GPG Key
         uses: crazy-max/ghaction-import-gpg@v4
@@ -46,25 +46,3 @@ jobs:
           git remote set-url origin "https://${{secrets.GIT_NAME}}:${{secrets.GIT_TOKEN}}@github.com/$GITHUB_REPOSITORY"
           yarn release
           git push --follow-tags origin main
-
-  publish-gpr:
-    name: Publish to Github Packages
-    needs: test
-    runs-on: self-hosted
-    if: "contains(github.event.head_commit.message, 'chore(release)')"
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com/
-      - uses: borales/actions-yarn@v2.3.0
-        name: Install dependencies
-        with:
-          cmd: install
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
