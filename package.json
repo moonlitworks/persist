@@ -37,14 +37,8 @@
     "lib"
   ],
   "exports": {
-    ".": {
-      "import": "./lib/index",
-      "types": "./lib/index.d.ts"
-    },
-    "./mongodb": {
-      "import": "./lib/services/mongodb/index",
-      "types": "./lib/services/mongodb/index.d.ts"
-    }
+    ".": "./lib/index.js",
+    "./mongodb": "./lib/services/mongodb/index.js"
   },
   "scripts": {
     "build": "tsc",
