@@ -4,6 +4,7 @@
   "description": "centralized library to handle persistent data",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "homepage": "https://github.com/moonlitworks/persist#readme",
   "repository": "git@github.com:moonlitworks/persist.git",
   "author": "eyzi <contact@eyzi.dev>",
   "license": "MPL-2.0",
@@ -32,6 +33,9 @@
       "src/**"
     ]
   },
+  "files": [
+    "lib"
+  ],
   "exports": {
     ".": "./lib/index",
     "./mongodb": "./lib/services/mongodb"
