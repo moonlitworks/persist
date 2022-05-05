@@ -16,6 +16,10 @@ jobs:
         with:
           cmd: install
       - uses: borales/actions-yarn@v2.3.0
+        name: Build library
+        with:
+          cmd: build
+      - uses: borales/actions-yarn@v2.3.0
         name: Run Test
         with:
           cmd: test
@@ -57,10 +61,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - uses: borales/actions-yarn@v2.3.0
-        name: Build library
-        with:
-          cmd: build
       - name: Publish
         run: npm publish
         env:
