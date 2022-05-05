@@ -1,6 +1,6 @@
 {
   "name": "@moonlitworks/persist",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "centralized library to handle persistent data",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
