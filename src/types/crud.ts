@@ -18,6 +18,10 @@ export type Deletable<T extends hasId> = {
   delete: (id: T["id"]) => Promisable<T | boolean>
 }
 
+export type Listable<T> = {
+  getAll: () => Promisable<T[]>
+}
+
 export type Queryable<T, Query = Partial<T>> = {
   query: (query: Query) => Promisable<T[]>
 }

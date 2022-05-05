@@ -6,6 +6,7 @@ import * as initModelCreate from "../../../../src/services/mongodb/crud/init-mod
 import * as initModelGet from "../../../../src/services/mongodb/crud/init-model-get"
 import * as initModelUpdate from "../../../../src/services/mongodb/crud/init-model-update"
 import * as initModelDelete from "../../../../src/services/mongodb/crud/init-model-delete"
+import * as initModelGetAll from "../../../../src/services/mongodb/crud/init-model-get-all"
 import * as initModelQuery from "../../../../src/services/mongodb/crud/init-model-query"
 
 describe("createMongoCrud", () => {
@@ -28,6 +29,7 @@ describe("createMongoCrud", () => {
     sandbox.stub(initModelGet, "default").returns("operation" as any)
     sandbox.stub(initModelUpdate, "default").returns("operation" as any)
     sandbox.stub(initModelDelete, "default").returns("operation" as any)
+    sandbox.stub(initModelGetAll, "default").returns("operation" as any)
     sandbox.stub(initModelQuery, "default").returns("operation" as any)
 
     const crud = createMongoCrud(testDb, {} as any)
@@ -36,6 +38,7 @@ describe("createMongoCrud", () => {
       get: "operation",
       update: "operation",
       delete: "operation",
+      getAll: "operation",
       query: "operation",
     })
   })

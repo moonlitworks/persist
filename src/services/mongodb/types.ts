@@ -6,6 +6,7 @@ import {
   Retrievable,
   Updatable,
   Deletable,
+  Listable,
   Queryable,
 } from "../../types"
 
@@ -27,4 +28,5 @@ export type MongoCrud<
   & Retrievable<T>
   & Updatable<T, UpdateBody>
   & Deletable<T>
+  & Listable<T>
   & Queryable<T, Query>

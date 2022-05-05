@@ -7,6 +7,7 @@ import initModelGet from "./init-model-get"
 import initModelUpdate from "./init-model-update"
 import initModelDelete from "./init-model-delete"
 import initModelQuery from "./init-model-query"
+import initModelGetAll from "./init-model-get-all"
 
 export default <
   T extends hasId,
@@ -30,6 +31,7 @@ export default <
     get: initModelGet<T>(model, documentParser),
     update: initModelUpdate<T, UpdateBody>(model, documentParser),
     delete: initModelDelete<T>(model, documentParser),
+    getAll: initModelGetAll<T>(model, documentParser),
     query: initModelQuery<T, Query>(model, documentParser),
   }
 }
