@@ -1,5 +1,5 @@
 {
-  "name": "persist",
+  "name": "@moonlitworks/persist",
   "version": "0.0.3",
   "description": "centralized library to handle persistent data",
   "main": "lib/index.js",
@@ -7,6 +7,9 @@
   "repository": "git@github.com:moonlitworks/persist.git",
   "author": "eyzi <contact@eyzi.dev>",
   "license": "MPL-2.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "mocha": {
     "require": [
       "ts-node/register"

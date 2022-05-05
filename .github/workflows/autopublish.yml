@@ -7,22 +7,10 @@ on:
 
 jobs:
   test:
-    name: Test
-    runs-on: self-hosted
     if: "contains(github.event.head_commit.message, 'chore(release)')"
+    runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
-        name: Checkout
-        with:
-          fetch-depth: 0
-      - uses: borales/actions-yarn@v2.3.0
-        name: Install dependencies
-        with:
-          cmd: install
-      - uses: borales/actions-yarn@v2.3.0
-        name: Run Test
-        with:
-          cmd: test
+      - uses: ./.github/workflows/test
 
   publish-gpr:
     name: Publish to Github Packages
