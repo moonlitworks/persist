@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.8 (2022-05-06)
+
+
+### Bug Fixes
+
+* **types:** include types in export of mongodb service ([bf4d1dc](https://github.com/moonlitworks/persist/commit/bf4d1dca5d9724a294ef9117e762de07cc7bac00))
+
 ### 1.0.7 (2022-05-06)
 
 
