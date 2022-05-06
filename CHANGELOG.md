@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.7 (2022-05-06)
+
+
+### Bug Fixes
+
+* **types:** fix create and update types ([c883985](https://github.com/moonlitworks/persist/commit/c883985b67c3c72e717bf5c359be91a7065070de))
+
 ### 1.0.6 (2022-05-06)
 
 
