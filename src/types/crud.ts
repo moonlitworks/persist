@@ -3,7 +3,7 @@ export type OmittedId<T extends hasId> = Omit<T, "id">
 export type Promisable<T> = T | Promise<T>
 
 export type Creatable<T extends hasId, CreateBody = OmittedId<T>> = {
-  create: (body: CreateBody) => Promisable<T | boolean>
+  create: (body: CreateBody) => Promisable<T | undefined>
 }
 
 export type Retrievable<T extends hasId> = {
@@ -11,7 +11,7 @@ export type Retrievable<T extends hasId> = {
 }
 
 export type Updatable<T extends hasId, Query = Partial<T>> = {
-  update: (id: T["id"], body: Query) => Promisable<T | boolean>
+  update: (id: T["id"], body: Query) => Promisable<T | undefined | boolean>
 }
 
 export type Deletable<T extends hasId> = {
