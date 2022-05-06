@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.6 (2022-05-06)
+
+
+### Bug Fixes
+
+* **package.json:** remove imports ([3ee6747](https://github.com/moonlitworks/persist/commit/3ee67477fffdec1c4a172db56ca898a70e757fdb))
+
 ### 1.0.5 (2022-05-05)
 
 
