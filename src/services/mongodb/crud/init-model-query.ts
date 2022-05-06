@@ -1,5 +1,5 @@
 import { Model } from "mongoose"
-import { hasId } from "#types"
+import { hasId } from "../../../types"
 import { DocumentParser } from "../types"
 
 export default <T extends hasId, Query = Partial<T>>(

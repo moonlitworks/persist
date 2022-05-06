@@ -1,5 +1,5 @@
 import { isValidObjectId, Model } from "mongoose"
-import { hasId } from "#types"
+import { hasId } from "../../../types"
 import { DocumentParser } from "../types"
 
 export default <T extends hasId>(
@@ -8,8 +8,8 @@ export default <T extends hasId>(
 ) =>
   async (id: T["id"]) => {
     if (!isValidObjectId(id))
-      return undefined
+      return false
 
-    const doc = await model.findByIdAndRemove(id)
-    return doc ? parser(doc.toJSON) : undefined
+    const doc = await model.findByIdAndDelete(id)
+    return !!doc
   }

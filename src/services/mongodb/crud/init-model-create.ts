@@ -1,8 +1,8 @@
 import { Model } from "mongoose"
-import { hasId, OmittedId } from "#types"
+import { hasId, OmittedId } from "../../../types"
 import { DocumentParser } from "../types"
 
-export default <T extends hasId, CreateBody = Partial<OmittedId<T>>>(
+export default <T extends hasId, CreateBody = OmittedId<T>>(
   model: Model<T>,
   parser: DocumentParser<T>
 ) =>

@@ -47,7 +47,7 @@ describe("initModelUpdate", () => {
     const testId: any = "test-id"
     const testBody: any = { test: true }
     await initModelUpdate(model, parser as any)(testId, testBody)
-    expect(model.findByIdAndUpdate.firstCall?.lastArg).to.eql({ new: true })
+    expect(model.findByIdAndUpdate.firstCall?.lastArg).to.eql({ returnDocument: "after" })
   })
   
   it("should not call model.findByIdAndUpdate when id is not valid ObjectId", async () => {

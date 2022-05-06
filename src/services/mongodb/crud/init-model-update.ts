@@ -1,5 +1,5 @@
 import { isValidObjectId, Model } from "mongoose"
-import { hasId } from "#types"
+import { hasId } from "../../../types"
 import { DocumentParser } from "../types"
 
 export default <T extends hasId, Query = Partial<T>>(
@@ -10,6 +10,6 @@ export default <T extends hasId, Query = Partial<T>>(
     if (!isValidObjectId(id))
       return undefined
 
-    const doc = await model.findByIdAndUpdate(id, body, { new: true })
+    const doc = await model.findByIdAndUpdate(id, body, { returnDocument: "after" })
     return doc ? parser(doc.toJSON()) : undefined
   }

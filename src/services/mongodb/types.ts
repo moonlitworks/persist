@@ -12,7 +12,7 @@ import {
 
 export type DocumentParser<T = any> = (doc: any) => T
 
-export type MongoModelOptions<T = any> = {
+export type MongoModelOptions<T extends hasId = any> = {
   schema: Schema,
   collectionName: string
   documentParser?: DocumentParser<T>

@@ -1,5 +1,5 @@
 import { Mongoose } from "mongoose"
-import { hasId, OmittedId } from "#types"
+import { hasId, OmittedId } from "../../../types"
 import { MongoModelOptions } from "../types"
 import identity from "./identity"
 import initModelCreate from "./init-model-create"
@@ -11,7 +11,7 @@ import initModelGetAll from "./init-model-get-all"
 
 export default <
   T extends hasId,
-  CreateBody = Partial<OmittedId<T>>,
+  CreateBody = OmittedId<T>,
   UpdateBody = Partial<T>,
   Query = Partial<T>
 >(db: Mongoose, options: MongoModelOptions<T>) => {
